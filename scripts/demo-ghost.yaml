@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghost
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 2368
+  selector:
+    app: ghost
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost
+  template:
+    metadata:
+      labels:
+        app: ghost
+    spec:
+      containers:
+      - name: ghost
+        image: ghost:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 2368
+        env:
+        - name: url
+          value: http://ghost.vmware.demo
+        volumeMounts:
+        - mountPath: /var/lib/ghost/content
+          name: content
+      volumes:
+      - name: content
+        persistentVolumeClaim:
+          claimName: ghost-content
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ghost-content
+spec:
+  storageClassName: pacific-gold-storage-policy
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi

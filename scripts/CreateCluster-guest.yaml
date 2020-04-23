@@ -1,0 +1,26 @@
+apiVersion: gcm.vmware.com/v1alpha1
+kind: ManagedCluster
+metadata:
+  name: uat-cluster
+  namespace: projets
+spec:
+  topology:
+    controlPlane:
+      count: 1
+      class: guaranteed-xsmall
+      storageClass: pacificproject-storage-policy
+    workers:
+      count: 2
+      class: guaranteed-xsmall
+      storageClass: pacificproject-storage-policy
+  distribution:
+    version: v1.15.5+vmware.1-tkg.1.85123d8
+  settings:
+    #imageName: ob-15344507-photon-3-k8s-v1.15.5+vmware.1.66-guest.1.37
+    network:
+      cni:
+        name: calico
+      services:
+        cidrBlocks: ["10.43.0.0/16"]
+      pods:
+        cidrBlocks: ["10.44.0.0/16"]

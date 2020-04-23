@@ -1,0 +1,9 @@
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: i-am-a-vm
+spec:
+  imageName: ob-15604142-photon-3-k8s-v1.15.5+vmware.1-tkg.1.85123d8
+  className: guaranteed-xsmall
+  powerState: poweredOn
+  storageClass: pacificproject-storage-policy

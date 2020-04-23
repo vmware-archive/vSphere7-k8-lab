@@ -1,0 +1,17 @@
+apiVersion: run.tanzu.vmware.com/v1alpha1 #tkg api endpoint
+kind: TanzuKubernetesCluster #required parameter
+metadata:
+  name: david-tkc-1 #cluster name, user defined
+  namespace: david-ns-01 #supervisor namespace
+spec:
+  distribution:
+    version: v1.15 #resolved kubernetes version
+  topology:
+    controlPlane:
+      count: 3 #number of master nodes
+      class: guaranteed-small #vmclass for master nodes
+      storageClass: pacific-workload-vms-1 #storageclass for master nodes
+    workers:
+      count: 3 #number of worker nodes
+      class: guaranteed-small #vmclass for worker nodes
+      storageClass: pacific-workload-vms-1 #storageclass for worker nodes

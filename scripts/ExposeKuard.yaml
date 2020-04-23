@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kuard-marketing
+spec:
+  selector:
+    app: kuard
+    deployment: kuard-marketing
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080

@@ -1,0 +1,25 @@
+apiVersion: gcm.vmware.com/v1alpha1
+kind: ManagedCluster
+metadata:
+  name: wordpress
+  namespace: vsphere-k8-hol
+spec:
+  topology:
+    controlPlane:
+      count: 1
+      class: guaranteed-xsmall # vmclass to be used for master(s)
+      storageClass: pacific-gold-storage-policy
+    workers:
+      count: 2
+      class: guaranteed-xsmall # vmclass to be used for workers(s)
+      storageClass: pacific-gold-storage-policy
+  distribution:
+    version: v1.15.5+vmware.1.66-guest.1.37
+  settings:
+    network:
+      cni:
+        name: calico
+      services:
+        cidrBlocks: ["198.51.100.0/12"]
+      pods:
+        cidrBlocks: ["192.0.2.0/16"]

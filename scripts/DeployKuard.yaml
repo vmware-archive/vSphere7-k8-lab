@@ -1,0 +1,24 @@
+#kubectl create deployment kuard-semgr --image=10.96.64.66/pcf-ns/kuard
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuard-marketing
+  labels:
+    app: kuard
+    deployment : kuard-marketing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kuard
+  template:
+    metadata:
+      labels:
+        app: kuard
+        deployment : kuard-marketing
+    spec:
+      containers:
+      - name: kuard-marketing
+        image: gcr.io/kuar-demo/kuard-amd64:blue
+        ports:
+        - containerPort: 8080
