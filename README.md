@@ -32,10 +32,10 @@ TODO
 
 > 	1. [Enable Supervisor Cluster](./supervisorcluster/enablecluster)
 > 	2. [Enable Harbor](./supervisorcluster/enableharbor)
-> 	3. [Enable access control](./supervisorcluster/accesscontrol)
+> 	3. [Create Namespace](./supervisorcluster/namespace)
 > 	4. [Enable access control](./supervisorcluster/accesscontrol)
-> 	5. [Enable access control](./supervisorcluster/accesscontrol)
-> 	6. [Access Supervisor Cluster](./supervisorcluster/accesscluster)
+> 	5. [Access Supervisor Cluster](./supervisorcluster/accesscluster)
+> 	6. [Deploy Nativepod](./supervisorcluster/nativepod)
 
 
 ## 3. Application Catalog Cluster
