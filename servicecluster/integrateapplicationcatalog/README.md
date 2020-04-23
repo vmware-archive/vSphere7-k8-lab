@@ -2,8 +2,8 @@
 
 ```bash
 kubectl create namespace kubeapps
-helm repo update
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
 helm install kubeapps bitnami/kubeapps -n kubeapps --set useHelm3=true --set frontend.service.type=LoadBalancer
 kubectl -n kubeapps get svc kubeapps
 ```
