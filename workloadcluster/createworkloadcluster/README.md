@@ -18,6 +18,11 @@ kubectl config use-context <namespace>
 `
 
 Make sure to use the correct Storage Class that you created and Namespace in the manifest file.
+**[Note:** In the GA version of vSphere 7 the apiVersion and kind have changed.  Use the following for GA versions in your create-service-cluster.yaml]
+```
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TanzuKubernetesCluster
+```
 
 ![](../../images/workloadcluster1.png)
 
